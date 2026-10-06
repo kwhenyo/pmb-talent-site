@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PMB Talent Partners | Minority-Owned Staffing Agency</title>
+<meta name="description" content="PMB Talent Partners is a minority-owned staffing agency providing direct hire, contract, and contract-to-hire talent across healthcare, engineering, manufacturing, professional services, and construction.">
+<meta property="og:title" content="PMB Talent Partners">
+<meta property="og:description" content="Direct hire, contract, and contract-to-hire staffing, with diversity and inclusion built into every placement.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23c9a227'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='11' font-weight='700' text-anchor='middle' fill='%231a1508'%3EPMB%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<style>
+  /* Committed black-and-gold identity with a PMB blue accent (from PMB's ad palette) — same in every viewer theme, by design. */
+  :root{
+    --ink:#f4ecd8;
+    --ink-soft:#b3a683;
+    --paper:#0a0908;
+    --paper-raised:#171310;
+    --line:#453b23;
+    --gold:#c9a227;
+    --gold-bright:#e8c766;
+    --gold-deep:#8a6a12;
+    --white:#f8f6f0;
+    --on-gold:#1a1508;
+    --blue:#1E8FE8;
+    --blue-bright:#5AAEF2;
+    --on-blue:#04121f;
+    --nav-h:64px;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    padding-left:max(20px, env(safe-area-inset-left,0px));
+    padding-right:max(20px, env(safe-area-inset-right,0px));
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;}
+  h1,h2,h3{
+    font-family:"Fraunces", Georgia, serif;
+    font-weight:600;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    text-wrap:balance;
+    margin:0;
+  }
+  p{line-height:1.6;color:var(--ink-soft);margin:0;}
+  a{color:inherit;}
+  .mono{font-family:"IBM Plex Mono", ui-monospace, monospace;}
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold-bright);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow.pill{background:var(--blue);color:var(--on-blue);padding:6px 12px;border-radius:2px;font-weight:600;}
+  .eyebrow.pill::before{display:none;}
+  .eyebrow::before{content:"";width:16px;height:1px;background:var(--gold-bright);display:inline-block;}
+
+  /* ---- nav ---- */
+  header.site{
+    position:sticky;
+    top:env(safe-area-inset-top,0px);
+    z-index:20;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--gold);
+    box-shadow:0 2px 0 var(--blue);
+  }
+  nav.wrap{
+    height:var(--nav-h);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Fraunces",serif;font-weight:600;font-size:17px;white-space:nowrap;}
+  .brand .mark{
+    width:30px;height:30px;border-radius:7px;
+    background:var(--gold);color:var(--on-gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:700;letter-spacing:-0.03em;
+    flex:none;
+  }
+  .navlinks{display:flex;gap:22px;font-size:14px;align-items:center;}
+  .navlinks a:not(.btn){text-decoration:none;color:var(--ink-soft);}
+  .navlinks a:not(.btn):hover{color:var(--ink);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 18px;border-radius:3px;
+    font-size:14px;font-weight:600;text-decoration:none;
+    border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--gold);color:var(--on-gold);}
+  .btn-primary:hover{background:var(--gold-bright);}
+  .btn-blue{background:var(--blue);color:var(--on-blue);}
+  .btn-blue:hover{background:var(--blue-bright);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright);}
+  @media (max-width:720px){
+    .navlinks a:not(.btn){display:none;}
+  }
+
+  /* ---- hero ---- */
+  .hero{padding:64px 0 48px;}
+  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end;}
+  @media (max-width:800px){.hero-grid{grid-template-columns:1fr;}}
+  .hero h1{font-size:clamp(34px,5.6vw,58px);margin-top:14px;}
+  .hero .lede{margin-top:18px;font-size:17px;max-width:46ch;}
+  .hero-cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;}
+  .stat-rail{
+    display:flex;flex-direction:column;gap:0;
+    border-top:1px solid var(--line);
+  }
+  .stat{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:14px 0;border-bottom:1px solid var(--line);
+    gap:12px;
+  }
+  .stat .n{font-family:"Fraunces",serif;font-size:26px;color:var(--gold-bright);}
+  .stat .l{font-size:12px;color:var(--ink-soft);text-align:right;max-width:22ch;}
+
+  /* ---- section scaffolding ---- */
+  section{padding:64px 0;border-top:1px solid var(--line);}
+  .section-head{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-bottom:36px;}
+  @media (max-width:720px){.section-head{grid-template-columns:1fr;gap:12px;}}
+  .section-head h2{font-size:clamp(24px,3.4vw,32px);}
+  .section-head .desc{max-width:52ch;}
+  .band-gold{background:var(--paper-raised);border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);}
+
+  /* ---- about ---- */
+  .badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+  .badge{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:0.04em;
+    border:1px solid var(--line);border-radius:999px;padding:6px 14px;color:var(--ink-soft);
+  }
+
+  /* ---- services ---- */
+  .service-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media (max-width:720px){.service-list{grid-template-columns:1fr;}}
+  .service{background:var(--paper);padding:26px;display:flex;flex-direction:column;gap:10px;}
+  .service .idx{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--blue-bright);}
+  .service h3{font-size:19px;}
+
+  /* ---- industries ledger ---- */
+  .ledger{border-top:1px solid var(--line);}
+  .ledger-row{
+    display:grid;grid-template-columns:28px 200px 1fr;gap:20px;
+    padding:18px 0;border-bottom:1px solid var(--line);align-items:start;
+  }
+  @media (max-width:640px){.ledger-row{grid-template-columns:24px 1fr;}
+    .ledger-row .lgloss{grid-column:2;}
+  }
+  .ledger-row .num{font-family:"IBM Plex Mono",monospace;color:var(--blue-bright);font-size:13px;}
+  .ledger-row h3{font-size:18px;}
+  .ledger-row .lgloss{font-size:14.5px;}
+
+  /* ---- values ---- */
+  .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  @media (max-width:800px){.values-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:460px){.values-grid{grid-template-columns:1fr;}}
+  .value{border-top:2px solid var(--gold);padding-top:14px;}
+  .value h3{font-size:16px;color:var(--ink);}
+  .value p{font-size:13.5px;}
+
+  /* ---- roles ---- */
+  .role-table{width:100%;border-collapse:collapse;}
+  .role-table th{
+    text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--ink-soft);font-weight:500;
+    padding:0 0 10px;border-bottom:1px solid var(--line);
+  }
+  .role-table td{padding:16px 12px 16px 0;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px;}
+  .role-table tr td:first-child{padding-left:0;}
+  .role-title{font-weight:600;}
+  .tag{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    padding:3px 9px;border-radius:999px;background:var(--paper-raised);color:var(--ink-soft);
+    border:1px solid var(--line);white-space:nowrap;
+  }
+  .roles-more{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    margin-top:24px;padding-top:20px;border-top:1px dashed var(--line);
+  }
+  .roles-note{font-size:13px;max-width:44ch;}
+
+  /* ---- contact ---- */
+  .contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;}
+  @media (max-width:720px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-line{
+    display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);
+    font-size:15px;gap:12px;
+  }
+  .contact-line .k{color:var(--ink-soft);font-size:13px;font-family:"IBM Plex Mono",monospace;}
+  .contact-line a{text-decoration:none;font-weight:600;}
+  .contact-line a:hover{color:var(--blue-bright);}
+
+  /* ---- lead form ---- */
+  .lead-form{display:flex;flex-direction:column;gap:22px;max-width:640px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:560px){.form-row{grid-template-columns:1fr;}}
+  .field{display:flex;flex-direction:column;gap:7px;}
+  .field label{font-size:13px;font-weight:600;color:var(--ink-soft);}
+  .field .opt{font-weight:400;opacity:0.85;}
+  .field input,.field select,.field textarea{
+    background:var(--paper-raised);border:1px solid var(--line);color:var(--ink);
+    padding:11px 12px;border-radius:3px;font:inherit;font-size:14.5px;
+  }
+  .field textarea{resize:vertical;min-height:96px;}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue);
+  }
+  .form-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .form-note{font-size:12.5px;max-width:36ch;}
+
+  footer{padding:28px 0 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--ink-soft);}
+
+  .reveal{opacity:1;transform:none;}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<header class="site">
+  <nav class="wrap">
+    <div class="brand"><span class="mark">PMB</span> PMB Talent Partners</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#industries">Industries</a>
+      <a href="#hire-form">Hire</a>
+      <a href="#roles">Open Roles</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="https://www.careers-page.com/pmbtalent" target="_blank" rel="noopener">View Open Roles</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none;">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow pill">Minority-Owned Staffing Partner</span>
+        <h1>Talent, placed<br>with intention.</h1>
+        <p class="lede">PMB Talent Partners builds direct hire, contract, and contract-to-hire staffing solutions across healthcare, engineering, manufacturing, and construction — matching skilled people to the employers who need them, with diversity and inclusion built into every placement.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://www.careers-page.com/pmbtalent" target="_blank" rel="noopener">Browse open roles →</a>
+          <a class="btn btn-blue" href="#hire-form">Hire through PMB</a>
+        </div>
+      </div>
+      <div class="stat-rail">
+        <div class="stat"><span class="n mono">05</span><span class="l">industries actively staffed</span></div>
+        <div class="stat"><span class="n mono">13</span><span class="l">roles open right now</span></div>
+        <div class="stat"><span class="n mono">3</span><span class="l">placement models: direct hire, contract, contract-to-hire</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="reveal">
+    <div class="wrap section-head">
+      <span class="eyebrow">About</span>
+      <div>
+        <h2>A staffing partner built on relationships, not requisitions.</h2>
+        <p class="desc" style="margin-top:16px;">PMB Talent Partners is a minority-owned staffing agency dedicated to promoting diversity and inclusion in every placement it makes. The goal is straightforward: become the go-to staffing partner in every market served, earned through client excellence and relationships built to last — not one-off fills.</p>
+        <div class="badge-row">
+          <span class="badge">MINORITY-OWNED BUSINESS</span>
+          <span class="badge">DIRECT HIRE</span>
+          <span class="badge">CONTRACT &amp; CONTRACT-TO-HIRE</span>
+          <span class="badge">D&amp;I FOCUSED</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Services</span>
+        <div>
+          <h2>Four ways to bring on talent.</h2>
+          <p class="desc" style="margin-top:16px;">Every engagement is customized — whether the need is a single permanent hire or a project-based team.</p>
+        </div>
+      </div>
+      <div class="service-list">
+        <div class="service">
+          <span class="idx">01 / DIRECT HIRE</span>
+          <h3>Direct Hire Placements</h3>
+          <p>Permanent, full-time placements sourced and vetted against your team's actual working needs — not just a job description.</p>
+        </div>
+        <div class="service">
+          <span class="idx">02 / CONTRACT-TO-HIRE</span>
+          <h3>Contract-to-Hire</h3>
+          <p>A working trial period for both sides. Bring someone on under contract, convert to permanent once the fit is proven.</p>
+        </div>
+        <div class="service">
+          <span class="idx">03 / CONTRACT STAFFING</span>
+          <h3>Contract Staffing</h3>
+          <p>Skilled talent for defined projects, seasonal surges, or coverage gaps — scaled up or down as the work requires.</p>
+        </div>
+        <div class="service">
+          <span class="idx">04 / CUSTOM SOLUTIONS</span>
+          <h3>Customized Solutions</h3>
+          <p>Permanent and project-based staffing plans built around a specific operation, shift pattern, or hiring timeline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="industries" class="reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Industries</span>
+        <div>
+          <h2>Where PMB places talent.</h2>
+        </div>
+      </div>
+      <div class="ledger">
+        <div class="ledger-row">
+          <span class="num">01</span><h3>Healthcare</h3>
+          <p class="lgloss">Clinical, technical, and facility roles for providers who can't afford a slow hire.</p>
+        </div>
+        <div class="ledger-row">
+          <span class="num">02</span><h3>Professional Services</h3>
+          <p class="lgloss">Administrative, operations, and specialist roles supporting client-facing firms.</p>
+        </div>
+        <div class="ledger-row">
+          <span class="num">03</span><h3>Engineering &amp; IT</h3>
+          <p class="lgloss">Technical talent for infrastructure, systems, and engineering teams.</p>
+        </div>
+        <div class="ledger-row">
+          <span class="num">04</span><h3>Manufacturing</h3>
+          <p class="lgloss">Skilled trades and production leadership — from the floor to the plant manager's office.</p>
+        </div>
+        <div class="ledger-row">
+          <span class="num">05</span><h3>Construction</h3>
+          <p class="lgloss">Field and project staffing matched to schedule, trade, and site requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-gold reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What guides the work</span>
+        <div><h2>Four commitments behind every placement.</h2></div>
+      </div>
+      <div class="values-grid">
+        <div class="value"><h3>Exceed expectations</h3><p>Every search is measured against what the client actually needs, not just the fastest fill.</p></div>
+        <div class="value"><h3>Long-term relationships</h3><p>Built to outlast a single req — with candidates and client teams alike.</p></div>
+        <div class="value"><h3>Mutual success</h3><p>A placement only counts as a win when it works for both sides of the desk.</p></div>
+        <div class="value"><h3>Diversity &amp; inclusion</h3><p>Not a policy on a page — a standard applied to how every search is run.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hire-form" class="reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">For Employers</span>
+        <div>
+          <h2>Tell us who you need to hire.</h2>
+          <p class="desc" style="margin-top:16px;">Share a few details about the role and we'll follow up with a search plan — usually within one business day.</p>
+        </div>
+      </div>
+      <form id="employer-form" class="lead-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="lf-company">Company name</label>
+            <input id="lf-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="lf-name">Your name</label>
+            <input id="lf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="lf-email">Work email</label>
+            <input id="lf-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="lf-phone">Phone <span class="opt">(optional)</span></label>
+            <input id="lf-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="lf-industry">Industry</label>
+            <select id="lf-industry" name="industry" required>
+              <option value="" disabled selected>Select one</option>
+              <option>Healthcare</option>
+              <option>Professional Services</option>
+              <option>Engineering &amp; IT</option>
+              <option>Manufacturing</option>
+              <option>Construction</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="lf-need">Hiring need</label>
+            <select id="lf-need" name="need" required>
+              <option value="" disabled selected>Select one</option>
+              <option>Direct Hire</option>
+              <option>Contract-to-Hire</option>
+              <option>Contract Staffing</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="lf-details">What are you hiring for? <span class="opt">(role, headcount, timeline)</span></label>
+          <textarea id="lf-details" name="details" rows="4"></textarea>
+        </div>
+        <div class="form-foot">
+          <button class="btn btn-blue" type="submit">Send inquiry →</button>
+          <p class="form-note" id="lf-note">Opens in your email app, addressed to PMB Talent Partners — nothing is stored or sent anywhere else.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="roles" class="reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Open Roles</span>
+        <div>
+          <h2>Currently hiring across our network.</h2>
+          <p class="desc" style="margin-top:16px;">A sample of active openings — the full list of 13 roles is kept live on our careers page.</p>
+        </div>
+      </div>
+      <table class="role-table">
+        <thead>
+          <tr><th>Role</th><th>Location</th><th>Type</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="role-title">Maintenance Mechanic</td>
+            <td>Rochester, NY</td>
+            <td><span class="tag">Manufacturing</span></td>
+          </tr>
+          <tr>
+            <td class="role-title">Laboratory Maintenance Technician</td>
+            <td>Upstate NY</td>
+            <td><span class="tag">Healthcare</span></td>
+          </tr>
+          <tr>
+            <td class="role-title">Manufacturing Manager — Blanking &amp; Press Brakes</td>
+            <td>Upstate NY</td>
+            <td><span class="tag">Manufacturing</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="roles-more">
+        <p class="roles-note">Roles update continuously and are managed on our applicant tracking system — apply directly to see the complete, current list.</p>
+        <a class="btn btn-primary" href="https://www.careers-page.com/pmbtalent" target="_blank" rel="noopener">See all 13 open roles →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2 style="margin-top:14px;">Hiring, or looking for your next role?</h2>
+        <p style="margin-top:16px;max-width:46ch;">Employers: tell us about the role and we'll put a search plan together. Candidates: browse open positions and apply directly — new roles are added regularly.</p>
+      </div>
+      <div>
+        <div class="contact-line"><span class="k">PHONE</span><a href="tel:+15854208599">+1 (585) 420-8599</a></div>
+        <div class="contact-line"><span class="k">EMAIL</span><a href="mailto:pbanahene@pmbtalent.com">pbanahene@pmbtalent.com</a></div>
+        <div class="contact-line"><span class="k">LINKEDIN</span><a href="https://www.linkedin.com/company/pmb-talent-partners/" target="_blank" rel="noopener">/company/pmb-talent-partners</a></div>
+        <div class="contact-line"><span class="k">OPEN ROLES</span><a href="https://www.careers-page.com/pmbtalent" target="_blank" rel="noopener">careers-page.com/pmbtalent</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>© <span id="year"></span> PMB Talent Partners · Minority-Owned Business</span>
+  <span>Direct Hire · Contract · Contract-to-Hire</span>
+</footer>
+
+<script>
+  try{ document.getElementById('year').textContent = new Date().getFullYear(); }catch(e){}
+  try{
+    var employerForm = document.getElementById('employer-form');
+    if(employerForm){
+      employerForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        if(typeof employerForm.reportValidity === 'function' && !employerForm.reportValidity()){ return; }
+        var val = function(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+        var company = val('lf-company');
+        var contact = val('lf-name');
+        var email = val('lf-email');
+        var phone = val('lf-phone');
+        var industry = val('lf-industry');
+        var need = val('lf-need');
+        var details = val('lf-details');
+        var subject = 'Hiring inquiry — ' + company;
+        var body = [
+          'Company: ' + company,
+          'Contact: ' + contact,
+          'Email: ' + email,
+          'Phone: ' + (phone || '—'),
+          'Industry: ' + industry,
+          'Hiring need: ' + need,
+          '',
+          'Details:',
+          details || '—'
+        ].join('\n');
+        var note = document.getElementById('lf-note');
+        if(note){ note.textContent = 'Opening your email app to send this to PMB Talent Partners…'; }
+        window.location.href = 'mailto:pbanahene@pmbtalent.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      });
+    }
+  }catch(e){}
+</script>
+
+</body>
+</html>
