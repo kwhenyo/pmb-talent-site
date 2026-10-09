@@ -384,7 +384,9 @@
           <p class="desc" style="margin-top:16px;">Share a few details about the role and we'll follow up with a search plan — usually within one business day.</p>
         </div>
       </div>
-      <form id="employer-form" class="lead-form" novalidate>
+      <form id="employer-form" class="lead-form" action="https://formspree.io/f/mkjobwqk" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New employer inquiry from pmbtalent.com">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="form-row">
           <div class="field">
             <label for="lf-company">Company name</label>
@@ -435,7 +437,7 @@
         </div>
         <div class="form-foot">
           <button class="btn btn-blue" type="submit">Send inquiry →</button>
-          <p class="form-note" id="lf-note">Opens in your email app, addressed to PMB Talent Partners — nothing is stored or sent anywhere else.</p>
+          <p class="form-note" id="lf-note" role="status" aria-live="polite">Your details go directly to PMB Talent Partners and are used only to respond to your inquiry.</p>
         </div>
       </form>
     </div>
@@ -510,29 +512,26 @@
       employerForm.addEventListener('submit', function(e){
         e.preventDefault();
         if(typeof employerForm.reportValidity === 'function' && !employerForm.reportValidity()){ return; }
-        var val = function(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; };
-        var company = val('lf-company');
-        var contact = val('lf-name');
-        var email = val('lf-email');
-        var phone = val('lf-phone');
-        var industry = val('lf-industry');
-        var need = val('lf-need');
-        var details = val('lf-details');
-        var subject = 'Hiring inquiry — ' + company;
-        var body = [
-          'Company: ' + company,
-          'Contact: ' + contact,
-          'Email: ' + email,
-          'Phone: ' + (phone || '—'),
-          'Industry: ' + industry,
-          'Hiring need: ' + need,
-          '',
-          'Details:',
-          details || '—'
-        ].join('\n');
         var note = document.getElementById('lf-note');
-        if(note){ note.textContent = 'Opening your email app to send this to PMB Talent Partners…'; }
-        window.location.href = 'mailto:pbanahene@pmbtalent.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        var btn = employerForm.querySelector('button[type="submit"]');
+        var data = new FormData(employerForm);
+        var company = (data.get('company') || '').toString().trim();
+        if(company){ data.set('_subject', 'New employer inquiry — ' + company); }
+        if(data.get('email')){ data.set('_replyto', data.get('email')); }
+        if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+        if(note){ note.textContent = 'Sending your inquiry…'; }
+        fetch(employerForm.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+          .then(function(r){
+            if(r.ok){
+              employerForm.reset();
+              if(note){ note.textContent = 'Thank you! Your inquiry was sent. PMB Talent Partners will follow up within one business day.'; }
+              if(btn){ btn.textContent = 'Sent ✓'; }
+            } else { throw new Error('send failed'); }
+          })
+          .catch(function(){
+            if(note){ note.innerHTML = 'Sorry, something went wrong. Please try again or email <a href="mailto:pbanahene@pmbtalent.com">pbanahene@pmbtalent.com</a>.'; }
+            if(btn){ btn.disabled = false; btn.textContent = 'Send inquiry →'; }
+          });
       });
     }
   }catch(e){}
