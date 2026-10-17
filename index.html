@@ -13,6 +13,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://pmbtalent.com/">
+<meta name="robots" content="index,follow">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EmploymentAgency","name":"PMB Talent Partners","url":"https://pmbtalent.com/","logo":"https://pmbtalent.com/pmb-logo.png","image":"https://pmbtalent.com/og-image.png","telephone":"+1-585-420-8599","email":"pbanahene@pmbtalent.com","description":"Minority-owned staffing agency providing direct hire, contract, and contract-to-hire talent across healthcare, engineering, manufacturing, professional services, and construction.","sameAs":["https://www.linkedin.com/company/pmb-talent-partners/","https://www.careers-page.com/pmbtalent"]}
+</script>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
@@ -58,6 +63,12 @@
   }
   p{line-height:1.6;color:var(--ink-soft);margin:0;}
   a{color:inherit;}
+  .skip-link{position:fixed;left:-9999px;top:8px;z-index:100;background:var(--gold);color:#0a0908;padding:10px 16px;border-radius:6px;font-weight:600;text-decoration:none;}
+  .skip-link:focus{left:16px;}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold-bright);outline-offset:3px;}
+  .privacy{margin-top:10px;font-size:13px;color:var(--ink-soft);max-width:70ch;}
+  .privacy summary{cursor:pointer;color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+  .privacy p{margin-top:8px;line-height:1.6;}
   .mono{font-family:"IBM Plex Mono", ui-monospace, monospace;}
   .eyebrow{
     font-family:"IBM Plex Mono", monospace;
@@ -242,6 +253,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
+<a class="skip-link" href="#main">Skip to main content</a>
 <header class="site">
   <nav class="wrap">
     <a class="brand" href="#" aria-label="PMB Talent Partners home"><img src="pmb-logo.png" alt="PMB Talent Partners" width="174" height="36"></a>
@@ -257,7 +269,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main">
   <section class="hero" style="border-top:none;">
     <div class="wrap hero-grid">
       <div>
@@ -437,7 +449,7 @@
         </div>
         <div class="form-foot">
           <button class="btn btn-blue" type="submit">Send inquiry →</button>
-          <p class="form-note" id="lf-note" role="status" aria-live="polite">Your details go directly to PMB Talent Partners and are used only to respond to your inquiry.</p>
+          <p class="form-note" id="lf-note" role="status" aria-live="polite">Your details go directly to PMB Talent Partners and are used only to respond to your inquiry. <a href="#privacy">Privacy notice</a>.</p>
         </div>
       </form>
     </div>
@@ -500,12 +512,21 @@
 
 <footer class="wrap">
   <div class="foot-logo"><img src="pmb-logo-slogan.png" alt="PMB Talent Partners: Empowering your workforce, elevating your success" width="260" height="79" loading="lazy"></div>
-  <span>© <span id="year"></span> PMB Talent Partners · Minority-Owned Business</span>
+  <span>© <span id="year">2026</span> PMB Talent Partners · Minority-Owned Business</span>
   <span>Direct Hire · Contract · Contract-to-Hire</span>
+  <details class="privacy" id="privacy">
+    <summary>Privacy notice</summary>
+    <p>When you send the employer inquiry form, PMB Talent Partners receives the details you enter: company name, your name, work email, phone (if given), industry, hiring need, and your message. We use them only to respond to your inquiry and discuss your hiring needs. We do not sell your information.</p>
+    <p>Form submissions are delivered to us by Formspree, a form-processing service. This site does not use advertising cookies. To ask what we hold about you or to have it deleted, email <a href="mailto:pbanahene@pmbtalent.com">pbanahene@pmbtalent.com</a>.</p>
+  </details>
 </footer>
 
 <script>
   try{ document.getElementById('year').textContent = new Date().getFullYear(); }catch(e){}
+  try{
+    var openPrivacy = function(){ if(location.hash==='#privacy'){ var d=document.getElementById('privacy'); if(d){ d.open=true; } } };
+    window.addEventListener('hashchange', openPrivacy); openPrivacy();
+  }catch(e){}
   try{
     var employerForm = document.getElementById('employer-form');
     if(employerForm){
